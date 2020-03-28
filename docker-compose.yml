@@ -1,0 +1,16 @@
+
+version: '3'
+
+services:
+ djangopwa:
+   user: $UID:$GID
+   image:
+      djangopwa_sucheta
+   ports:
+     - "8000:8000"
+   volumes:
+     - ./djangopwa:/djangopwa:Z
+   stdin_open: true
+   tty: true
+   command: >
+     sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py runsslserver 0.0.0.0:8000"
