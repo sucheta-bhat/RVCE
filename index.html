@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+    <title>Login</title>
+    
+    
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div id="login">
+      <form name='form-login' method="post">
+        <span class="fontawesome-user"></span>
+          <input type="text" id="user" placeholder="Username">
+       
+        <span class="fontawesome-lock"></span>
+          <input type="password" id="pass" placeholder="Password">
+        
+        <input type="button" value="Login" onclick="log()">
+
+</form>
+    </div>
+   
+
+
+
+<script>
+    function log(){
+        let email = document.getElementById("user").value;
+        let password = document.getElementById("pass").value;
+        if(email === "admin" && password === "admin"){
+            //alert("Validation done");
+            window.location="./successful.html"
+        }
+        else{
+            //alert("Failed");
+            window.location="./unsuccessful.html"
+        }
+    }
+</script>
+<script>
+    if('serviceWorker' in navigator){
+        window.addEventListener('load', ()=>{
+         navigator.serviceWorker.register('sw.js')
+         .then(registration => {
+             console.log('service worker is registered')
+         })
+         .catch(err=>{
+             console.log('Registration Failed', err)
+         })
+     })   
+    }
+    
+  </script>
+  
+</body>
+</html>
